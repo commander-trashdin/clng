@@ -80,7 +80,9 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
 + [[https://pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/][Paul Khuong has many notes on potential compiler improvement, regarding sbcl]]
 
++ Separations into libraries: separate class system
 
++ Different kind of polymorphism (or none by default. but ability to implement many)
 
 
 * Counterarguments
