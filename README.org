@@ -23,10 +23,14 @@ This is a template document. Its main goal is to collect ideas and propositions 
 
 
 * Suggestions
-** Adjusting old:
 
+** [[https://www.cliki.net/Proposed%20Extensions%20To%20ANSI][List of proposed ANSI revisions]]
+And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Clarifications][List of clarifications]]
+
+** Adjusting old(ad hoc):
 
 + Unicode support
+
 + Special characters in string literals via something analogous to \x3F, \177, \n, \t, \u+1234.
 
 + Way to write long string literals split across lines with indentation, without involving format:
@@ -74,7 +78,7 @@ This is a template document. Its main goal is to collect ideas and propositions 
 
 + Type system overhaul
 
-+ ...
++ [[https://pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/][Paul Khuong has many notes on potential compiler improvement, regarding sbcl]]
 
 
 
