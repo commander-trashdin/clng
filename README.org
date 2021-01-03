@@ -1,0 +1,74 @@
+* Common lisp next generation
+
+This is a template document. Its main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This way, people can commit their ideas and discuss them in issues.
+
+
+* The Reasoning
+
+** Reasons:
+
++
+
+* Suggestions
+** Adjusting old:
+
+
++ Unicode support
++ Special characters in string literals via something analogous to \x3F, \177, \n, \t, \u+1234.
+
++ Way to write long string literals split across lines with indentation, without involving format:
+
+  TXR Lisp:
+  (foo bar "this is just one \
+           \ string literal with only single spaces")
++ Standardized code walking primitives: one body of user code with no #+this #-that which correctly walks all special forms.
+
++ Expand-full function: perform all expansion on an expression in a given macro environment. Optionally report all free variable and function references still emanating from the expanded code.
+
++ native lazy list via lazy-cons type which satisfies consp.
+
++ require numerically equivalent fixnums to be eq.
+
++ Overhaul of path names, w.r.t. current OS landscape. One standard way to parse a POSIX or Windows path string to a path name, or a URL. path names should have a :method for this.
+
++ Standardize the Meta-Object Protocol for CLOS.
+
++ Standard support for weak hash table keys and values.
+
++ Hash tables with arbitrary :test function.
+
++ GC finalization support: register callback for finalized object.
+
++ less undefined behavior
+
++ Environments
+
++ Extensible loop
+
++ Extensible sequences
+
++ Security (fixing reader eval, ...)
+
++ Reader macros overhaul
+
+
+** Creating new:
+
++ Low-level lisp standartized.
+
++ Type system overhaul
+
+
+
+
+
+
+* Counterarguments
+
+
+
+
+
+
+
+* Conclusion
