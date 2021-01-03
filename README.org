@@ -64,6 +64,9 @@ This is a template document. Its main goal is to collect ideas and propositions 
 
 + Reader macros overhaul
 
++ Useful accessors on macro environment objects!
+
++ standard parser for lambda and macro lambda lists.
 
 ** Creating new:
 
