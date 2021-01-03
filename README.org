@@ -9,6 +9,19 @@ This is a template document. Its main goal is to collect ideas and propositions 
 
 +
 
+
+* Alternatives:
+
++ [[https://phoe.tymoon.eu/clus/doku.php?id=start][UltraSpec]]
+  The differences are
+
++ [[https://common-lisp.net/project/cdr/][CDR Project]]
+  The differences are
+
++
+
+
+
 * Suggestions
 ** Adjusting old:
 
@@ -58,12 +71,18 @@ This is a template document. Its main goal is to collect ideas and propositions 
 
 + Type system overhaul
 
-
++ ...
 
 
 
 
 * Counterarguments
+
++ Money
+
++ Time
+
++ People
 
 
 
