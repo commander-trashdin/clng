@@ -1,9 +1,9 @@
 * Common lisp next generation
 
-This is a template document. Its main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This way, people can commit their ideas and discuss them in issues.
+This is a template document. Its main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This way, people can commit their ideas and discuss them in issues. Keep in mind that many things proposed here can be contradictory, and the end result may very well crystallize into several differently designed languages. However, we consider it a step forward, compared to single messages and abrupt threads found on in different random chats blogs and formus. It is certainly time to at least start accumulating all those ideas. now matter how fundamental or small they are. Main inspiration comes from Common Lisp, but people contributing to this certainly know more than one language.
 
 
-* The Motivation:
+* Motivation:
 
 Common Lisp standard was created in 1994. One of the main motavations for its creation was uniting many relatively big as well as relatively small dialects of previous Lisp, making it an ultimate successor of MacLisp Lisp series. The natural advantage of this is uniting community forces around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a ceratin level of backwards compatibility with all the previous existing dialects, resulting in language with different not always consistent with each other features, as well as some historical weight.
 
@@ -137,8 +137,13 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
   Or at least, more security on certain areas.
 
 * Is this idea new?
-Of course not. Attempts to build something like this exist, lots of them: [[https://github.com/eudoxia0/corvus][1]], [[https://github.com/tomhrr/dale][2]], [[https://github.com/kiselgra/c-mera][3]], [[https://github.com/eudoxia0/interim][4]] and there are more.
+
+Of course not. Attempts to build low level lisps exist, lots of them: [[https://github.com/eudoxia0/corvus][1]], [[https://github.com/tomhrr/dale][2]], [[https://github.com/kiselgra/c-mera][3]], [[https://github.com/eudoxia0/interim][4]] and there are more.
 Two things they seemingly lack are: pre-built well defined specification and community visibility and support.
+
+
+Same can be said about attempts to just upgrade exsiting CL implementation, such as famous CL21.
+
 
 * Counterarguments
 
@@ -153,5 +158,5 @@ Two things they seemingly lack are: pre-built well defined specification and com
 
 
 
-
 * Conclusion
+ May not be written until this bulk of this document is finished.
