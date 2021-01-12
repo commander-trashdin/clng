@@ -74,6 +74,10 @@ As well as special characters in string literals via something analogous to \x3F
 
   Or at least, more security on certain areas.
 
++ Block-compilation
+
+  Akin to [[https://mstmetent.blogspot.com/2020/02/block-compilation-fresh-in-sbcl-202.html][what]] is done in sbcl.
+
 * Almost backwards compatible changes:
 
 + Extensible sequences
@@ -85,9 +89,17 @@ As well as special characters in string literals via something analogous to \x3F
   While laziness can be theoretically speaking implemented as a library, the __efficient__ (that is, for production use) laziness is nontrivial to make. Thereofre, it makes sense for
   maintainers of the language to implement it (at some point) as a part of (semi-)standard library.
 
++ Standard library redesign
+
+  Some thigns that are in there can be in utility libs such as alexandria, while some thigns from alexandria can be too useful to not include them.
+
 + Standardize the Meta-Object Protocol for CLOS
 
   Instead of closer-mop we should have just mop. This includes both what currently is in MOP as well as some additions -- better definition lookup, all that concerns structures etc.
+
++ Executables and binary files
+
+  A standard way to build them, maybe in different forms, with/without tree shaking.
 
 + Sockets
 
