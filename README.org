@@ -1,15 +1,20 @@
 * Common lisp next generation
 
-This document's main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This is NOT a template for a new specification, but merely a place for discussion. Here, people can commit their ideas and discuss them in issues. Keep in mind that many things proposed here can be contradictory to each other, and the end result may very well crystallize into several differently designed languages. However this is a step forward compared to single messages and abrupt threads spreade across different random chats, blogs and formus. It is certainly time to at least start accumulating all those ideas no matter how fundamental or small they are. Main inspiration comes from Common Lisp, but people contributing to this certainly know more than one language.
+This document's main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This is NOT a template for a new specification, but merely a place for discussion.
+
+
+Ideas should be pull requests and discussions shoudl take palce in issues. Keep in mind that many things proposed here can be contradictory to each other, resulting in several differently designed languages. However this is a step forward compared to single messages and abrupt threads spread across different random chats, blogs and formus. Surely it is time to start accumulating ideas no matter how fundamental or small they are. While main inspiration comes from Common Lisp, people contributing to this usually know more than one language.
 
 
 * Motivation:
 
-Common Lisp standard was created in 1994. One of the main motavations for its creation was uniting many (relatively big as well as relatively small) dialects of previous Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such approach is uniting community around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a ceratin level of backwards compatibility with all the previous existing dialects, resulting in language with different (not always consistent with each other) features and a certain historical baggage.
+Common Lisp standard was created in 1994. The major goal was to unite many (relatively big as well as small) dialects of previous Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such approach is uniting community around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a ceratin level of backwards compatibility with all the previous existing dialects, resulting in language with different (not always consistent with each other) features and a certain historical baggage.
 
 
 ** Summary:
 So far it seems that all suggestions can be divided into three categories -- fully backwards compatible, almost backwards compatible (with very minor refactorizations required)... and basically a new lisp lagnauge. Apparently, the new language sugesstions tend to lean towards low-level features, as the demand for high-level ones is already satisfied by high flexibility of CL.
+
+Fully backwards compatible propositions share goal with CDR project, read below.
 
 * Alternatives:
 
@@ -37,7 +42,7 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
 + Unifyining variables declarations.
 
-  =Let= handling multiple values biding and/or list-pattern matching. Global variables, i.e. =defglobal=, see =sb-ext:defglobal=.
+  =Let= handling multiple values biding and/or list-pattern matching. Global variables with =defglobal=, see =sb-ext:defglobal=.
 
 ** General features:
 
@@ -176,7 +181,7 @@ Attempts to build low-level stattically-typed lisp-like language are also well k
 Two things they presumably lack are: pre-built well defined specification and community visibility and support.
 
 
-Same can be said about attempts to just upgrade exsiting CL implementation, such as famous CL21.
+Same can be said about attempts to just upgrade exsiting CL implementation, such as famous [[https://lispcookbook.github.io/cl-cookbook/cl21.html][CL21]].
 
 
 * Useful links:
@@ -197,4 +202,4 @@ Same can be said about attempts to just upgrade exsiting CL implementation, such
 
 
 * Conclusion
- May not be written until this bulk of this document is finished.
+ May not be written until the bulk of this document is finished.
