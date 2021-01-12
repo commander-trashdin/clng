@@ -61,10 +61,10 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 + Long string literals split across lines with indentation, without involving format:
 
 
-```
+#+BEGIN_SRC
 (foo bar "this is just one \
           \ string literal with only single spaces")
-```
+#+END_SRC
 
 As well as special characters in string literals via something analogous to \x3F, \177, \n, \t, \u+1234.
 
@@ -120,6 +120,10 @@ As well as special characters in string literals via something analogous to \x3F
 + Reader macros overhaul
 
   Details later.
+
++ Package (and system?) overhaul
+
+  Resolving names at runtime, more convenient export system etc.
 
 + Useful accessors on macro environment objects.
 
