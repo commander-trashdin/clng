@@ -149,8 +149,9 @@ As well as special characters in string literals via something analogous to \x3F
 
 ** Is this idea new?
 
-Of course not. Attempts to build low level lisps exist, lots of them: [[https://github.com/eudoxia0/corvus][1]], [[https://github.com/tomhrr/dale][2]], [[https://github.com/kiselgra/c-mera][3]], [[https://github.com/eudoxia0/interim][4]] and there are more.
-Two things they seemingly lack are: pre-built well defined specification and community visibility and support.
+Of course not. Attempts to build low level C-like lisp exist, lots of them: [[https://github.com/eudoxia0/corvus][1]], [[https://github.com/tomhrr/dale][2]], [[https://github.com/kiselgra/c-mera][3]], [[https://github.com/eudoxia0/interim][4]] and there are more.
+Attempts to build low-level stattically-typed lisp-like language are also well known: [[https://github.com/carp-lang/Carp][1]], [[https://github.com/u2zv1wx/neut][2]] and there are more.
+Two things they presumably lack are: pre-built well defined specification and community visibility and support.
 
 
 Same can be said about attempts to just upgrade exsiting CL implementation, such as famous CL21.
