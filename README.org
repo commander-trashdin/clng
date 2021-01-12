@@ -33,7 +33,11 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
 + Improved hash-tables.
 
-  There are many possible improvements for hash-tables -- readable hash-tables, initial-values for make-hash-table, typed hash-tables, arbitary :test function for hash-tables, standard support for weak hash table keys and values.
+  There are many possible improvements for hash-tables -- readable hash-tables, initial-values for =make-hash-table=, typed hash-tables, arbitary =:test= function for hash-tables, standard support for weak hash table keys and values.
+
++ Unifyining variables declarations.
+
+  =Let= handling multiple values biding and/or list-pattern matching. Global variables, i.e. =defglobal=, see =sb-ext:defglobal=.
 
 ** General features:
 
@@ -51,15 +55,13 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
 ** Low-level features:
 
-+ Require numerically equivalent fixnums to be eq.
++ Require numerically equivalent fixnums to be =eq=.
 
   Depending on the implementation they sometimes are and sometimes aren't. This can be complicated for some implementations, therefore maybe this issue is rather a consequence of some other issues that should be highlighted.
 
 + Unicode support
 
-
 + Long string literals split across lines with indentation, without involving format:
-
 
 #+BEGIN_SRC
 (foo bar "this is just one \
@@ -69,6 +71,10 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 As well as special characters in string literals via something analogous to \x3F, \177, \n, \t, \u+1234.
 
 + Expand-full function: perform all expansion on an expression in a given macro environment. Optionally report all free variables.
+
++ Allow =eval= access to environment
+
+  That implies eval being able to eval things that only make sense in certain environment.
 
 + Security (fixing reader eval, ...)
 
@@ -96,6 +102,10 @@ As well as special characters in string literals via something analogous to \x3F
 + Standardize the Meta-Object Protocol for CLOS
 
   Instead of closer-mop we should have just mop. This includes both what currently is in MOP as well as some additions -- better definition lookup, all that concerns structures etc.
+
++ First-class macros
+
+  Macros that can be bound to variables, passed as arguments and returned from functions. [[http://matt.might.net/articles/metacircular-evaluation-and-first-class-run-time-macros/][A more detailed explanation.]]
 
 + Executables and binary files
 
