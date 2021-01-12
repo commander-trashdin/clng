@@ -1,15 +1,15 @@
 * Common lisp next generation
 
-This is a template document. Its main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This way, people can commit their ideas and discuss them in issues. Keep in mind that many things proposed here can be contradictory, and the end result may very well crystallize into several differently designed languages. However, this is a step forward, compared to single messages and abrupt threads found on in different random chats blogs and formus. It is certainly time to at least start accumulating all those ideas. now matter how fundamental or small they are. Main inspiration comes from Common Lisp, but people contributing to this certainly know more than one language.
+This document's main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This is NOT a template for a new specification, but merely a place for discussion. Here, people can commit their ideas and discuss them in issues. Keep in mind that many things proposed here can be contradictory to each other, and the end result may very well crystallize into several differently designed languages. However this is a step forward compared to single messages and abrupt threads spreade across different random chats, blogs and formus. It is certainly time to at least start accumulating all those ideas no matter how fundamental or small they are. Main inspiration comes from Common Lisp, but people contributing to this certainly know more than one language.
 
 
 * Motivation:
 
-Common Lisp standard was created in 1994. One of the main motavations for its creation was uniting many relatively big as well as relatively small dialects of previous Lisp, making it an ultimate successor of MacLisp Lisp series. The natural advantage of this is uniting community forces around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a ceratin level of backwards compatibility with all the previous existing dialects, resulting in language with different not always consistent with each other features, as well as some historical weight.
+Common Lisp standard was created in 1994. One of the main motavations for its creation was uniting many (relatively big as well as relatively small) dialects of previous Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such approach is uniting community around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a ceratin level of backwards compatibility with all the previous existing dialects, resulting in language with different (not always consistent with each other) features and a certain historical baggage.
 
 
 ** Summary:
-So far it seems that all suggestions can be divided into three categories -- fully backwards compatible, almost backwards compatible (with very minor refactorizations required)...and basically a new lisp-based lagnauge. Apparently, the new language sugesstions tend to be way more low-level, as the demand for high-level features is already satisfied by CL high flexibility.
+So far it seems that all suggestions can be divided into three categories -- fully backwards compatible, almost backwards compatible (with very minor refactorizations required)... and basically a new lisp lagnauge. Apparently, the new language sugesstions tend to lean towards low-level features, as the demand for high-level ones is already satisfied by high flexibility of CL.
 
 * Alternatives:
 
@@ -29,45 +29,44 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
 + Extensible loop
 
-  Inextensible loop is the very reasons iterate library exists.
+  The very reason iterate library exists. However, having a loop construct (a basic feature) as a library makes it very non obvious, especially for newcomers. The "iterate vs loop" argument, certain design choices (loop being "unlispy" vs iterate using code-walker) -- are issues to be resolved.
 
-+ Hash tables with arbitrary :test function.
++ Improved hash-tables.
 
-  Also probably typed hash-tables.
+  There are many possible improvements for hash-tables -- readable hash-tables, initial-values for make-hash-table, typed hash-tables, arbitary :test function for hash-tables, standard support for weak hash table keys and values.
 
 ** General features:
 
-+ Standard support for weak hash table keys and values.
-
 + Less undefined behavior
 
-  Very generic statement
+  Some UB cases that are hard to categorize can be put here.
 
 + Standard parser for lambda and macro lambda lists.
 
-  There are a lot of generic half-baked ones.
+  There are a lot of generic half-baked ones. It also may include the discussion of what can be added/changed about lambda-lists structure -- such as pattern matching.
 
 + CFFI
 
-  Existing one is said to be somewhat decent but surely there are improvememnts.
+  Existing one is decent but surely there are improvememnts. This part requires specific problems described.
 
 ** Low-level features:
 
 + Require numerically equivalent fixnums to be eq.
 
-  They sometimes are and sometimes aren't.
+  Depending on the implementation they sometimes are and sometimes aren't. This can be complicated for some implementations, therefore maybe this issue is rather a consequence of some other issues that should be highlighted.
 
 + Unicode support
 
-  Please.
+
++ Long string literals split across lines with indentation, without involving format:
 
 
-+ Way to write long string literals split across lines with indentation, without involving format:
-
-````
+```
 (foo bar "this is just one \
           \ string literal with only single spaces")
-````
+```
+
+As well as special characters in string literals via something analogous to \x3F, \177, \n, \t, \u+1234.
 
 + Expand-full function: perform all expansion on an expression in a given macro environment. Optionally report all free variables.
 
@@ -79,34 +78,44 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
 + Extensible sequences
 
-  As well as extensible data structures of different kind.
+  As well as extensible data structures of different kind. The protocol for sequences is a thing to discuss.
 
 + Native lazy list via lazy-cons type which satisfies consp.
 
-  While laziness can be theoretically speaking implemented as a library, the __efficient__ (that is, for production use) laziness is very untrivial to make. Thereofre, maybe it makes sense for
-  maintainers of the language implement them (at some point) as a part of "close to standard" library.
+  While laziness can be theoretically speaking implemented as a library, the __efficient__ (that is, for production use) laziness is nontrivial to make. Thereofre, it makes sense for
+  maintainers of the language to implement it (at some point) as a part of (semi-)standard library.
 
-+ Standardize the Meta-Object Protocol for CLOS.
++ Standardize the Meta-Object Protocol for CLOS
 
-  Instead of closer-mop we should have just mop.
+  Instead of closer-mop we should have just mop. This includes both what currently is in MOP as well as some additions -- better definition lookup, all that concerns structures etc.
 
 + Sockets
 
-+ GC finalization support: register callback for finalized object.
+  Exists in form of a [[https://github.com/usocket/trivial-sockets][library]]
 
-  The very necessity of gc is a thing to discuss, but at least some control over it is in high demand.
++ GC finalization support: register callback for finalized object
+
+  At least some control over it is in high demand. Better support for dynamic-extent. For more specific examples look [[https://github.com/trivial-garbage/trivial-garbage][here]].
 
 + Environments
 
   Standardtized, and a set of baisc functions to wrok with them.
 
-+ Special characters in string literals via something analogous to \x3F, \177, \n, \t, \u+1234.
++ Standardized code walking primitives: one body of user code which correctly walks all special forms.
 
-+ Standardized code walking primitives: one body of user code with no #+this #-that which correctly walks all special forms.
+  There is hu.dwim as a library.
+
++ Name conflicts
+
+  As a compatibility [[https://github.com/phoe/trivial-package-local-nicknames][library]], [[http://www.sbcl.org/manual/#Package_002dLocal-Nicknames][here]] is how it looks for a specific implementation.
 
 * New (presumably low-level) language:
 
 + Different kind of polymorphism (or none by default. but ability to implement many)
+
+  There are several atttempts to deal with the inefficiency (in terms of raw performance and safety) of generic functions (which are good for many tasks, but not all) -- including [[https://github.com/marcoheisig/fast-generic-functions][fast-generic-functions]], [[https://github.com/markcox80/specialization-store][specialization-store]], and [[https://github.com/digikar99/adhoc-polymorphic-functions][others]]. However, there are certain limitations for all of them -- classes vs types, there are problems with parametrized types, classes cannot be parametrized etc.
+
+  There are also attempts to do something completely different such as [[https://github.com/fare/lisp-interface-library][LIL]] -- they should not be forgotten.
 
 + Reader macros overhaul
 
@@ -118,10 +127,6 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
   A lot of small and big things to add -- proper parametrized types, recursived type definitions, more strict (?) type checks and inference, the ability to adjust it so building something like [[https://github.com/stylewarning/coalton][Coalton]] would be less painful.
 
-+ [[https://pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/][Paul Khuong has many notes on potential compiler improvement, regarding sbcl]]
-
-  While many of those ideas are very specific to sbcl, that blog has a lot of material to consider.
-
 + Separations into libraries: separate class system
 
   Separate condition system, separate data structuers library, algorithms library, math library, concurrency library, iteration library, code-walking library, ....
@@ -130,9 +135,13 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
   One standard way to parse a POSIX or Windows path string to a path name, or a URL. path names should have a :method for this.
 
-+ GC existence.
++ GC
 
-  This will cause a lot of arguments, and the semantics may change because of it.
+  Is GC necessary? Should we have RAII in some form instead? THere are several alternatives. Semantics of the languages depends heavily on this as well.
+
++ Continuations
+
+  A powerful low-level control construct. It is up to the debate for several reasons, one of the being its [[http://www.nhplace.com/kent/PFAQ/unwind-protect-vs-continuations-original.html][interaction]] with unwind-protect.
 
 ** Is this idea new?
 
@@ -142,6 +151,10 @@ Two things they seemingly lack are: pre-built well defined specification and com
 
 Same can be said about attempts to just upgrade exsiting CL implementation, such as famous CL21.
 
+
+* Useful links:
+
+[[http://nhplace.com/kent/Papers/cl-untold-story.html][Common Lisp: The Untold Story]] and [[http://nhplace.com/kent/Papers/][friends]] have a lot of useful info in them. [[https://pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/][Paul Khuong blog]] has many notes on potential compiler improvement, althoug specific to sbcl.
 
 * Counterarguments
 
