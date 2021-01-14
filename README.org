@@ -284,46 +284,113 @@ As a compatibility [[https://github.com/phoe/trivial-package-local-nicknames][li
 
 * New (presumably low-level) language:
 
-+ Different kind of polymorphism (or none by default. but ability to implement many)
+All of the above suggestions apply to this as well however if a new language is being made, it makes sense to care less about any kind backwards compatibility and more about features. The ones presented here have very general description and are directions rather than something that can be put into actual specification.
 
-  There are several atttempts to deal with the inefficiency (in terms of raw performance and safety) of generic functions (which are good for many tasks, but not all) -- including [[https://github.com/marcoheisig/fast-generic-functions][fast-generic-functions]], [[https://github.com/markcox80/specialization-store][specialization-store]], and [[https://github.com/digikar99/adhoc-polymorphic-functions][others]]. However, there are certain limitations for all of them -- classes vs types, there are problems with parametrized types, classes cannot be parametrized etc.
+** Object system
+*** Objects
+**** Details
+How objects should be made? Constructors, destructors, (multiple) inhertiance vs composition etc
 
-  There are also attempts to do something completely different such as [[https://github.com/fare/lisp-interface-library][LIL]] -- they should not be forgotten.
+**** Reasoning
+There are different object systems for different tasks, but some of them are easier implemented in terms of another. Currently classes/structures cannot be parametrized in any way.
 
-+ Reader macros overhaul
+**** Current status
+CLOS has classes that are more of a first-class citizens, compared to structures that are less used and supported. Both of them interact with type system in a certain way, sometimes not the best.
 
-  Details later.
+*** Type system
+**** Details
+Which types should and should not be included, boxed vs unboxed types, type parametrization, linear types, dependent types etc.
 
-+ Syntax
+**** Reasoning
+Current type system is a state of art, but it is a stat of art from the 90s. There was a lot of research in the area for the last decaded that should be considered. While not all of this (if any) should go into the spec, the goal is to make it easier for the future developers to incorporate their prefered features into the language.
 
-  If and where can =[]= or ={}= be introduced, slot/structure access via generalized accessor function (as in, =(slot-value (slot-value (slot-value x 'foo) 'bar) 'baz)=
-  vs =x.foo.bar.baz= vs =(at x 'foo 'bar 'baz')= etc). The above-mentioned redader macros overhaul may include ways to hook into the reader itself, allowing various modifications.
+**** Current status
+Some peopl are trying to cover both small and big things -- proper parametrized types, recursived type definitions, more strict (?) type checks and inference, the major example being [[https://github.com/stylewarning/coalton][Coalton]].
 
-+ Package (and system?) overhaul
+*** Methods
+**** Details
+Depending on class system, methods or rather "methods" can be organized into traits/typeclasses, or generics, or belong to the class (unlikely). They can also specialize either on classes or types.
 
-  Resolving names at runtime, more convenient export system etc.
+**** Reasoning
+THe way generics work in CLOS allows for a certain flexibility and famous runtime redefinition. However at the same time, the performance of the current approach is quite poor, restriciting its use. Sometimes specializing on classes instead of types can be limiting.
+
+**** Current status
+There are several atttempts to deal with the inefficiency (in terms of raw performance and safety) of generic functions -- including [[https://github.com/marcoheisig/fast-generic-functions][fast-generic-functions]], [[https://github.com/markcox80/specialization-store][specialization-store]], and [[https://github.com/digikar99/adhoc-polymorphic-functions][others]]. However, they do not fully avoid limitations mentioned above.
+
+There are also attempts to do something completely different such as [[https://github.com/fare/lisp-interface-library][LIL]] -- they should not be forgotten.
+----------
+** Syntax
+*** Reader macros
+**** Details
+The way reader macros should work and interaction between user and reader.
+
+**** Reasoning
+Currently the system does not allow users to hook into reader. That could be a huge imporvement, allowing for various modifications.
+
+**** Current status
+There are libraries that try to extend possibilities, such as [[https://github.com/melisgl/named-readtables][named-readtables]].
+
+*** Syntax
+**** Details
+If and where can =[]= or ={}= be introduced, slot/structure dot =.= access, etc.
+
+**** Reasoning
+Compare  =(slot-value (slot-value (slot-value x 'foo) 'bar) 'baz)= vs =x.foo.bar.baz= vs =(at x 'foo 'bar 'baz')=.
+
+**** Current status
+
+-----------
+** System definitions
+*** Packages
+**** Details
+Allow to resolve names at runtime, more convenient export system etc.
+
+**** Reasoning
+
+**** Current status
+
+*** Pathnames
+**** Details
+Interaction with pathnames w.r.t. current OS landscape. One standard way to parse a POSIX or Windows path string to a path name, or a URL. Path names should have a "method" for this.
+
+**** Reasoning
+
+**** Current status
+
+*** Separation into libraries
+**** Details
+The core language can be separated into libraries with separate condition system, data structuers library, algorithms library, math library, concurrency library, iteration library, code-walking library, etc.
+
+**** Reasoning
+
+**** Current status
+[[https://github.com/robert-strandh/SICL][SICL]] and [[https://github.com/clasp-developers/clasp][Clasp]] compilers are build with this idea in mind.
+
+---------
+** Memory
+*** GC
+**** Details
+GC vs RAII in some form. There are several alternatives. Semantics of the language depends heavily on this as well.
+
+**** Reasoning
+GC vs (semi) manual memory management is about many things, including performance, convenience of use, precision of time estimations, more complicated structures etc.
+
+**** Current status
+
+
+*** Continuations
+**** Details
+A powerful low-level control construct.
+
+**** Reasoning
+It is up to the debate for several reasons, one of the being its [[http://www.nhplace.com/kent/PFAQ/unwind-protect-vs-continuations-original.html][interaction]] with unwind-protect.
+
+**** Current status
+--------
+** Misc
 
 + Useful accessors on macro environment objects.
 
-+ Type system overhaul
-
-  A lot of small and big things to add -- proper parametrized types, recursived type definitions, more strict (?) type checks and inference, the ability to adjust it so building something like [[https://github.com/stylewarning/coalton][Coalton]] would be less painful.
-
-+ Separations into libraries: separate class system
-
-  Separate condition system, separate data structuers library, algorithms library, math library, concurrency library, iteration library, code-walking library, ....
-
-+ Overhaul of path names, w.r.t. current OS landscape.
-
-  One standard way to parse a POSIX or Windows path string to a path name, or a URL. path names should have a :method for this.
-
-+ GC
-
-  Is GC necessary? Should we have RAII in some form instead? THere are several alternatives. Semantics of the languages depends heavily on this as well.
-
-+ Continuations
-
-  A powerful low-level control construct. It is up to the debate for several reasons, one of the being its [[http://www.nhplace.com/kent/PFAQ/unwind-protect-vs-continuations-original.html][interaction]] with unwind-protect.
 
 ** Is this idea new?
 
@@ -339,14 +406,15 @@ Same can be said about attempts to just upgrade exsiting CL implementation, such
 
 [[http://nhplace.com/kent/Papers/cl-untold-story.html][Common Lisp: The Untold Story]] and [[http://nhplace.com/kent/Papers/][friends]] have a lot of useful info in them. [[https://pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/][Paul Khuong blog]] has many notes on potential compiler improvement, althoug specific to sbcl.
 
-* Counterarguments
+* Obstacles
+
+While the discussion is good by itself, the important question is -- how can this come to life? There are 3 major components:
 
 + Money
 
 + Time
 
 + People
-
 
 
 
