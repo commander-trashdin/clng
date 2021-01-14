@@ -174,50 +174,113 @@ Different ways of compilation in more details, for example bloack-compilation, a
 ---------
 * Almost backwards compatible changes:
 
-+ Extensible sequences
+*** Extensible sequences
+**** Details
+Extensible data structures of different kind. The protocol for sequences is also a thing to discuss.
 
-  As well as extensible data structures of different kind. The protocol for sequences is a thing to discuss.
+**** Reasoning
 
-+ Native lazy list via lazy-cons type which satisfies consp.
+**** Current status
 
-  While laziness can be theoretically speaking implemented as a library, the __efficient__ (that is, for production use) laziness is nontrivial to make. Thereofre, it makes sense for
-  maintainers of the language to implement it (at some point) as a part of (semi-)standard library.
+---------
+*** Native lazy list via lazy-cons type which satisfies consp.
+**** Details
+While laziness can be theoretically speaking implemented as a library, the __efficient__ (that is, for production use) laziness is nontrivial to make. Thereofre, it makes sense for
+maintainers of the language to implement it (at some point) as a part of (semi-)standard library.
 
-+ Standard library redesign
+**** Reasoning
 
-  Some thigns that are in there can be in utility libs such as alexandria, while some thigns from alexandria can be too useful to not include them.
+**** Current status
 
-+ Standardize the Meta-Object Protocol for CLOS
+---------
 
-  Instead of closer-mop we should have just mop. This includes both what currently is in MOP as well as some additions -- better definition lookup, all that concerns structures etc.
+*** Standard library redesign
+**** Details
+Some thigns that are in there can be in utility libs such as alexandria, while some thigns from alexandria can be too useful to not include them.
 
-+ First-class macros
+**** Reasoning
 
-  Macros that can be bound to variables, passed as arguments and returned from functions. [[http://matt.might.net/articles/metacircular-evaluation-and-first-class-run-time-macros/][A more detailed explanation.]]
+**** Current status
 
-+ Executables and binary files
+---------
 
-  A standard way to build them, maybe in different forms, with/without tree shaking.
+*** Standardize the Meta-Object Protocol for CLOS
+**** Details
+Instead of closer-mop we should have just mop. This includes both what currently is in MOP as well as some additions -- better definition lookup, all that concerns structures etc.
 
-+ Sockets
+**** Reasoning
 
-  Exists in form of a [[https://github.com/usocket/trivial-sockets][library]]
+**** Current status
 
-+ GC finalization support: register callback for finalized object
+---------
 
-  At least some control over it is in high demand. Better support for dynamic-extent. For more specific examples look [[https://github.com/trivial-garbage/trivial-garbage][here]].
+*** First-class macros
+**** Details
+Macros that can be bound to variables, passed as arguments and returned from functions. [[http://matt.might.net/articles/metacircular-evaluation-and-first-class-run-time-macros/][A more detailed explanation.]]
 
-+ Environments
+**** Reasoning
 
-  Standardtized, and a set of baisc functions to wrok with them.
+**** Current status
 
-+ Standardized code walking primitives: one body of user code which correctly walks all special forms.
+---------
 
-  There is hu.dwim as a library.
+*** Executables and binary files
+**** Details
+A standard way to build them, maybe in different forms, with/without tree shaking.
 
-+ Name conflicts
+**** Reasoning
 
-  As a compatibility [[https://github.com/phoe/trivial-package-local-nicknames][library]], [[http://www.sbcl.org/manual/#Package_002dLocal-Nicknames][here]] is how it looks for a specific implementation.
+**** Current status
+
+---------
+
+*** Sockets
+**** Details
+
+**** Reasoning
+
+**** Current status
+Exists in form of a [[https://github.com/usocket/trivial-sockets][library]]
+
+---------
+
+*** GC finalization support: register callback for finalized object
+**** Details
+At least some control over it is in high demand. Better support for dynamic-extent. For more specific examples look [[https://github.com/trivial-garbage/trivial-garbage][here]].
+**** Reasoning
+
+**** Current status
+
+---------
+
+*** Environments
+**** Details
+Standardtized, and a set of baisc functions to wrok with them.
+**** Reasoning
+
+**** Current status
+
+---------
+
+*** Standardized code walking primitives: one body of user code which correctly walks all special forms.
+**** Details
+
+**** Reasoning
+
+**** Current status
+There is hu.dwim as a library.
+---------
+
+*** Name conflicts
+**** Details
+
+**** Reasoning
+
+**** Current status
+As a compatibility [[https://github.com/phoe/trivial-package-local-nicknames][library]], [[http://www.sbcl.org/manual/#Package_002dLocal-Nicknames][here]] is how it looks for a specific implementation.
+
+---------
+---------
 
 * New (presumably low-level) language:
 
