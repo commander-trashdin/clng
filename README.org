@@ -51,6 +51,7 @@ There are many possible improvements for hash-tables -- readable hash-tables, in
 
 **** Current status
 
+---------
 *** Unifyining variables declarations.
 
 **** Details
@@ -60,30 +61,64 @@ There are many possible improvements for hash-tables -- readable hash-tables, in
 
 **** Current status
 
+---------
 ** General features:
 
-+ Clear policy rules
+*** Clear policy rules
+**** Details
+This includes, but is not limited to, TCO cases, inlining, compiler-macros expansion, general safety of =(safety 0)= etc.
 
-  This includes, but is not limited to, TCO cases, inlining, compiler-macros expansion, general safety of =(safety 0)= etc.
+**** Reasoning
 
-+ Standard parser for lambda and macro lambda lists.
+**** Current status
 
-  There are a lot of generic half-baked ones. It also may include the discussion of what can be added/changed about lambda-lists structure -- such as pattern matching.
+---------
+*** Standard parser for lambda and macro lambda lists.
 
-+ CFFI
+**** Details
+There are a lot of generic half-baked ones. It also may include the discussion of what can be added/changed about lambda-lists structure -- such as pattern matching.
 
-  Existing one is decent but surely there are improvememnts. This part requires specific problems described.
+**** Reasoning
+
+**** Current status
+
+---------
+
+*** CFFI
+**** Details
+
+**** Reasoning
+
+**** Current status
+
+Existing one is decent but surely there are improvememnts. This part requires specific problems described.
+
+---------
 
 ** Low-level features:
 
-+ Require numerically equivalent fixnums to be =eq=.
+*** Equivalence functions cleanup.
 
-  Depending on the implementation they sometimes are and sometimes aren't. This can be complicated for some implementations, therefore maybe this issue is rather a consequence of some other issues that should be highlighted.
+**** Details
+Depending on the implementation numbers sometimes are =eq= and sometimes aren't. This can be complicated for some implementations, therefore maybe this issue is rather a consequence of some other issues that should be highlighted. Some =equalp= quirks are also questionable.
 
-+ Unicode support
+**** Reasoning
 
-+ Long string literals split across lines with indentation, without involving format:
+**** Current status
 
+---------
+
+*** Unicode support
+**** Details
+
+**** Reasoning
+
+**** Current status
+
+---------
+
+*** Long string literals split across lines with indentation, without involving format:
+**** Details
 #+BEGIN_SRC
 (foo bar "this is just one \
           \ string literal with only single spaces")
@@ -91,20 +126,52 @@ There are many possible improvements for hash-tables -- readable hash-tables, in
 
 As well as special characters in string literals via something analogous to \x3F, \177, \n, \t, \u+1234.
 
-+ Expand-full function: perform all expansion on an expression in a given macro environment. Optionally report all free variables.
+**** Reasoning
 
-+ Allow =eval= access to environment
+**** Current status
 
-  That implies eval being able to eval things that only make sense in certain environment.
+---------
 
-+ Security (fixing reader eval, ...)
+*** Expand-full function: perform all expansion on an expression in a given macro environment. Optionally report all free variables.
+**** Details
 
-  Or at least, more security on certain areas.
+**** Reasoning
 
-+ Block-compilation
+**** Current status
 
-  Akin to [[https://mstmetent.blogspot.com/2020/02/block-compilation-fresh-in-sbcl-202.html][what]] is done in sbcl.
+---------
 
+*** Allow =eval= access to environment
+**** Details
+That implies eval being able to eval things that only make sense in certain environment.
+
+**** Reasoning
+
+**** Current status
+
+---------
+*** Security (fixing reader eval, ...)
+
+**** Details
+More security on certain areas.
+
+**** Reasoning
+
+**** Current status
+
+---------
+
+*** Compilation
+
+**** Details
+Different ways of compilation in more details, for example bloack-compilation, akin to [[https://mstmetent.blogspot.com/2020/02/block-compilation-fresh-in-sbcl-202.html][what]] is done in sbcl.
+
+**** Reasoning
+
+**** Current status
+
+---------
+---------
 * Almost backwards compatible changes:
 
 + Extensible sequences
