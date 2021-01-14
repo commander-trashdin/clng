@@ -32,23 +32,38 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 
 ** High-level features:
 
-+ Extensible loop
+*** Extensible loop
 
-  The very reason iterate library exists. However, having a loop construct (a basic feature) as a library makes it very non obvious, especially for newcomers. The "iterate vs loop" argument, certain design choices (loop being "unlispy" vs iterate using code-walker) -- are issues to be resolved.
+**** Details
+The very reason iterate library exists. However, having a loop construct (a basic feature) as a library makes it very non obvious, especially for newcomers. The "iterate vs loop" argument, certain design choices (loop being "unlispy" vs iterate using code-walker) -- are issues to be resolved.
 
-+ Improved hash-tables.
+**** Reasoning
 
-  There are many possible improvements for hash-tables -- readable hash-tables, initial-values for =make-hash-table=, typed hash-tables, arbitary =:test= function for hash-tables, standard support for weak hash table keys and values.
+**** Current status
 
-+ Unifyining variables declarations.
+*** Improved hash-tables.
 
-  =Let= handling multiple values biding and/or list-pattern matching. Global variables with =defglobal=, see =sb-ext:defglobal=.
+**** Details
+There are many possible improvements for hash-tables -- readable hash-tables, initial-values for =make-hash-table=, typed hash-tables, arbitary =:test= function for hash-tables, standard support for weak hash table keys and values.
+
+**** Reasoning
+
+**** Current status
+
+*** Unifyining variables declarations.
+
+**** Details
+=Let= handling multiple values biding and/or list-pattern matching. Global variables with =defglobal=, see =sb-ext:defglobal=.
+
+**** Reasoning
+
+**** Current status
 
 ** General features:
 
-+ Less undefined behavior
++ Clear policy rules
 
-  Some UB cases that are hard to categorize can be put here.
+  This includes, but is not limited to, TCO cases, inlining, compiler-macros expansion, general safety of =(safety 0)= etc.
 
 + Standard parser for lambda and macro lambda lists.
 
@@ -147,6 +162,11 @@ As well as special characters in string literals via something analogous to \x3F
 + Reader macros overhaul
 
   Details later.
+
++ Syntax
+
+  If and where can =[]= or ={}= be introduced, slot/structure access via generalized accessor function (as in, =(slot-value (slot-value (slot-value x 'foo) 'bar) 'baz)=
+  vs =x.foo.bar.baz= vs =(at x 'foo 'bar 'baz')= etc). The above-mentioned redader macros overhaul may include ways to hook into the reader itself, allowing various modifications.
 
 + Package (and system?) overhaul
 
