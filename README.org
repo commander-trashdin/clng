@@ -350,6 +350,9 @@ Compare  =(slot-value (slot-value (slot-value x 'foo) 'bar) 'baz)= vs =x.foo.bar
 
 Available in the [[https://github.com/AccelerationNet/access/][Access]] library: dotted and nested access of data structures (including, but not limited to, slot values). Access is shipped in the [[https://github.com/ciel-lang/CIEL][CIEL]] project.
 
+Available in the [[https://github.com/vseloved/rutils/blob/master/docs/tutorial.md][Rutils]] library: dot notation and index-based
+access. =(elt (nth 1 (foo-slot2 (bar-slot1 obj)) 0)= can be written =@obj.slot1.slot2#1#0=.
+
 -----------
 ** System definitions
 *** Packages
