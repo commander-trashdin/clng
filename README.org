@@ -132,8 +132,9 @@ As well as special characters in string literals via something analogous to \x3F
 
 ---------
 
-*** Expand-full function: perform all expansion on an expression in a given macro environment. Optionally report all free variables.
+*** Expand-full function:
 **** Details
+Perform all expansion on an expression in a given macro environment. Optionally report all free variables.
 
 **** Reasoning
 
