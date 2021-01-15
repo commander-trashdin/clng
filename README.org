@@ -236,17 +236,20 @@ A standard way to build them, maybe in different forms, with/without tree shakin
 
 *** Sockets
 **** Details
+(At least) BSD sockets interface standardization.
 
 **** Reasoning
+Every modern language since 1990 includes BSD sockets library in its core.
 
 **** Current status
-Exists in form of a [[https://github.com/usocket/trivial-sockets][library]]
+Interfaces are not standardized. There are incompatible implementation-dependent extensions and projects like [[https://github.com/usocket/trivial-sockets][trivial-sockets]] and IOlib.
 
 ---------
 
 *** GC finalization support: register callback for finalized object
 **** Details
 At least some control over it is in high demand. Better support for dynamic-extent. For more specific examples look [[https://github.com/trivial-garbage/trivial-garbage][here]].
+
 **** Reasoning
 
 **** Current status
@@ -256,6 +259,7 @@ At least some control over it is in high demand. Better support for dynamic-exte
 *** Environments
 **** Details
 Standardtized, and a set of baisc functions to wrok with them.
+
 **** Reasoning
 
 **** Current status
