@@ -344,6 +344,8 @@ Compare  =(slot-value (slot-value (slot-value x 'foo) 'bar) 'baz)= vs =x.foo.bar
 
 **** Current status
 
+Available in the [[https://github.com/AccelerationNet/access/][Access]] library: dotted and nested access of data structures (including, but not limited to, slot values). Access is shipped in the [[https://github.com/ciel-lang/CIEL][CIEL]] project.
+
 -----------
 ** System definitions
 *** Packages
