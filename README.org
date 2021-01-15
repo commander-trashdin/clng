@@ -117,7 +117,7 @@ Depending on the implementation numbers sometimes are =eq= and sometimes aren't.
 
 ---------
 
-*** Long string literals split across lines with indentation, without involving format:
+*** Long string literals split across lines with indentation
 **** Details
 #+BEGIN_SRC
 (foo bar "this is just one \
@@ -132,7 +132,7 @@ As well as special characters in string literals via something analogous to \x3F
 
 ---------
 
-*** Expand-full function:
+*** Expand-full function
 **** Details
 Perform all expansion on an expression in a given macro environment. Optionally report all free variables.
 
