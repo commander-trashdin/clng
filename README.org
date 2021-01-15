@@ -27,6 +27,10 @@ Fully backwards compatible propositions share goal with CDR project, read below.
 
 And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Clarifications][List of clarifications]]
 
++ [[https://github.com/ciel-lang/CIEL][CIEL]] is an attempt at creating a batteries-included Common Lisp
+  distribution. It shares similar goals to the first part of our
+  document about fully backwards-compatible changes.
+
 
 * Fully backwards compatible changes:
 
