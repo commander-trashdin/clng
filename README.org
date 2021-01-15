@@ -309,7 +309,7 @@ Which types should and should not be included, boxed vs unboxed types, type para
 Current type system is a state of art, but it is a stat of art from the 90s. There was a lot of research in the area for the last decaded that should be considered. While not all of this (if any) should go into the spec, the goal is to make it easier for the future developers to incorporate their prefered features into the language.
 
 **** Current status
-Some peopl are trying to cover both small and big things -- proper parametrized types, recursived type definitions, more strict (?) type checks and inference, the major example being [[https://github.com/stylewarning/coalton][Coalton]].
+There are various attemps to extend type system with proper parametrized types, recursived type definitions, more strict type checks and inference, the major example being [[https://github.com/stylewarning/coalton][Coalton]].
 
 *** Methods
 **** Details
