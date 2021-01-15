@@ -3,16 +3,16 @@
 This document's main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This is NOT a template for a new specification, but merely a place for discussion.
 
 
-Ideas should be pull requests and discussions shoudl take palce in issues. Keep in mind that many things proposed here can be contradictory to each other, resulting in several differently designed languages. However this is a step forward compared to single messages and abrupt threads spread across different random chats, blogs and formus. Surely it is time to start accumulating ideas no matter how fundamental or small they are. While main inspiration comes from Common Lisp, people contributing to this usually know more than one language.
+Ideas should be pull requests and discussions should take place in issues. Keep in mind that many things proposed here can be contradictory to each other, resulting in several differently designed languages. However this is a step forward compared to single messages and abrupt threads spread across different random chats, blogs and formus. Surely it is time to start accumulating ideas no matter how fundamental or small they are. While main inspiration comes from Common Lisp, people contributing to this usually know more than one language.
 
 
 * Motivation:
 
-Common Lisp standard was created in 1994. The major goal was to unite many (relatively big as well as small) dialects of previous Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such approach is uniting community around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a ceratin level of backwards compatibility with all the previous existing dialects, resulting in language with different (not always consistent with each other) features and a certain historical baggage.
+Common Lisp standard was created in 1994. The major goal was to unite many (relatively big as well as small) dialects of previous Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such approach is uniting community around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a certain level of backwards compatibility with all the previous existing dialects, resulting in language with different (not always consistent with each other) features and a certain historical baggage.
 
 
 ** Summary:
-So far it seems that all suggestions can be divided into three categories -- fully backwards compatible, almost backwards compatible (with very minor refactorizations required)... and basically a new lisp lagnauge. Apparently, the new language sugesstions tend to lean towards low-level features, as the demand for high-level ones is already satisfied by high flexibility of CL.
+So far it seems that all suggestions can be divided into three categories -- fully backwards compatible, almost backwards compatible (with very minor refactorizations required)... and basically a new lisp language. Apparently, the new language suggestions tend to lean towards low-level features, as the demand for high-level ones is already satisfied by high flexibility of CL.
 
 Fully backwards compatible propositions share goal with CDR project, read below.
 
@@ -26,6 +26,10 @@ Fully backwards compatible propositions share goal with CDR project, read below.
 [[https://www.cliki.net/Proposed%20Extensions%20To%20ANSI][List of proposed ANSI revisions]]
 
 And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Clarifications][List of clarifications]]
+
++ [[https://github.com/ciel-lang/CIEL][CIEL]] is an attempt at creating a batteries-included Common Lisp
+  distribution. It shares similar goals to the first part of our
+  document about fully backwards-compatible changes.
 
 
 * Fully backwards compatible changes:
@@ -344,6 +348,11 @@ Compare  =(slot-value (slot-value (slot-value x 'foo) 'bar) 'baz)= vs =x.foo.bar
 
 **** Current status
 
+Available in the [[https://github.com/AccelerationNet/access/][Access]] library: dotted and nested access of data structures (including, but not limited to, slot values). Access is shipped in the [[https://github.com/ciel-lang/CIEL][CIEL]] project.
+
+Available in the [[https://github.com/vseloved/rutils/blob/master/docs/tutorial.md][Rutils]] library: dot notation and index-based
+access. =(elt (nth 1 (foo-slot2 (bar-slot1 obj)) 0)= can be written =@obj.slot1.slot2#1#0=.
+
 -----------
 ** System definitions
 *** Packages
@@ -369,7 +378,7 @@ The core language can be separated into libraries with separate condition system
 **** Reasoning
 
 **** Current status
-[[https://github.com/robert-strandh/SICL][SICL]] and [[https://github.com/clasp-developers/clasp][Clasp]] compilers are build with this idea in mind.
+[[https://github.com/robert-strandh/SICL][SICL]] and [[https://github.com/clasp-developers/clasp][Clasp]] compilers are built with this idea in mind.
 
 ---------
 ** Memory
@@ -404,7 +413,7 @@ Attempts to build low-level stattically-typed lisp-like language are also well k
 Two things they presumably lack are: pre-built well defined specification and community visibility and support.
 
 
-Same can be said about attempts to just upgrade exsiting CL implementation, such as famous [[https://lispcookbook.github.io/cl-cookbook/cl21.html][CL21]].
+Same can be said about attempts to just upgrade exiting CL implementation, such as famous [[https://lispcookbook.github.io/cl-cookbook/cl21.html][CL21]].
 
 
 * Useful links:
