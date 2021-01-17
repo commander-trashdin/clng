@@ -308,7 +308,7 @@ CLOS has classes that are more of a first-class citizens, compared to structures
 
 *** Type system
 **** Details
-Which types should and should not be included, boxed vs unboxed types, type parametrization, linear types, dependent types etc.
+Which types should and should not be included, boxed vs unboxed types, type parametrization, linear types, dependent types etc. Interaction with other parts such as (compiler-)macros.
 
 **** Reasoning
 Current type system is a state of art, but it is a stat of art from the 90s. There was a lot of research in the area for the last decaded that should be considered. While not all of this (if any) should go into the spec, the goal is to make it easier for the future developers to incorporate their prefered features into the language.
@@ -329,6 +329,19 @@ There are several atttempts to deal with the inefficiency (in terms of raw perfo
 There are also attempts to do something completely different such as [[https://github.com/fare/lisp-interface-library][LIL]] -- they should not be forgotten.
 ----------
 ** Syntax
+
+While not a low-level thing on its own, any changes to syntax can imply changes so breaking (for backwards compatibility) that it cannot be put in any of the above categories. The opinions on the subject heavily differ, the opposite approaches suggested are:
+
+No additional syntax at all (even for strings) with the ability to heavily modify the reader extending it for these types of things
+
+vs
+
+A lot of builtin syntaxic sugar, for example for literals, but some other thigns as well (some examples presented below), since there aren't that many common special syntaxic constructs, for ease of use.
+
+The default case, case sensitivity etc are also a thing to discuss, although there isn't much talk about hat part.
+
+This section can be separated in the future if necessary.
+
 *** Reader macros
 **** Details
 The way reader macros should work and interaction between user and reader.
@@ -398,13 +411,20 @@ The core language can be separated into libraries with separate condition system
 ** Memory
 *** GC
 **** Details
-GC vs RAII in some form. There are several alternatives. Semantics of the language depends heavily on this as well.
+GC vs RAII in some form. There are several alternatives. Semantics of the language depends heavily on this as well. As this section is probably one of the most fundamental things for Common Lisp (as well as most other lisps), here's a more detailed description:
+
++ Problems/Limitations/Use-cases with GC
++ Aspects include real-time systems, working well with foreign code, embedded-systems aka devices with limited memory; maybe something else
++ The whole page is an interesting read: [[https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)#Disadvantages][Garbage_collection_(computer_science) - Wikipedia]]
++ https://en.wikipedia.org/wiki/Manual_memory_management#Manual_management_and_correctness
++ What are th systems where GC is and isn't an issue (limited-memory systems?)
++ Default GC, but if GC does have disadvantages, an option to handle the memory manually should be provided.
 
 **** Reasoning
 GC vs (semi) manual memory management is about many things, including performance, convenience of use, precision of time estimations, more complicated structures etc.
 
 **** Current status
-
+[[https://github.com/trivial-garbage/trivial-garbage][trivial-garbage]] provides a portable API to finalizers, weak hash-tables and weak pointers on all major implementations of the Common Lisp programming language.
 
 *** Continuations
 **** Details
