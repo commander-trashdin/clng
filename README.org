@@ -355,10 +355,10 @@ access. =(elt (nth 1 (foo-slot2 (bar-slot1 obj)) 0)= can be written =@obj.slot1.
 
 *** Unified order of arguments
 **** Details
-In the case of functions, macros, perhaps even some conditions, the order of aguments is generally speaking unclear. When a given operation takes a data structure and an index/key to read from the data structure - in some cases the key is the 1st argument and in some cases it's the 2nd argument.
+Operations (functions, macros etc) have predictable (possibly identical) order of arguments. If an operations takes for example 2 arguments (data structure and an index/key) - it is expected that the data structure is always on the same position and the key is also on the same position across the board, regardless of what the actual positions are.
 
 **** Reasoning
-This issue is an unnecessary burden on one's mind when developing a project and forces the developer to break their focus to think about an out of place implementation detail instead of on the program's business logic. It's just is something that is there for no reason whatsoever other than legacy reasons.
+This issue is an unnecessary burden on one's mind when developing a project and forces the developer to break their focus to think about an out of place implementation detail instead of on the program's business logic. It's just is something that is there for no reason other than legacy.
 
 **** Current status
 The standard contains functions like (gethash key hashtable) and (aref array index).
