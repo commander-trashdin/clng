@@ -289,6 +289,77 @@ There is hu.dwim as a library.
 As a compatibility [[https://github.com/phoe/trivial-package-local-nicknames][library]], [[http://www.sbcl.org/manual/#Package_002dLocal-Nicknames][here]] is how it looks for a specific implementation.
 
 ---------
+
+*** Unified naming patterns
+**** Details
+- Have all constants be named like =+constant+= (wrapped in plus signs).
+- Have all dynamic variables be named like =*dynamic-variable*= (wrapped in 'earmuffs').
+- Either:
+  - have all predicates named like =*?= or =*-p= for full consistency.
+  - have 2 naming patterns (as it is now) but actually use them consistently:
+    - have predicates be named like =*p= if =*= is 1 word.
+    - have predicates be named like =*-p= if =*= is 2+ words separated by hyphens.
+
+Having the standard dictate that incorrect usage of the above be a compilation or even runtime error would make this change (almost?) definitely backwards incompatible (to an unknown (but potentially huge) extent).
+
+**** Reasoning
+It has been the community consensus for many years that these naming patterns should be used based on what meaning a given name holds. Any exception to this rule is just unexpected, unnecessary and probably should be treated as an error because the way a variable is named conveys the intented way of using it. Some compilers (i.e. SBCL) even give warnings about misuse of dynamic-variable-looking variables based on this particular convention.
+
+**** Current status
+The names for constants are not consistent across the board.
+Some examples of 'incorrectly' named constants (from just the standard):
+
+Examples of incorrectly named constants:
+#+BEGIN_SRC
+cl:most-negative-fixnum
+cl:most-positive-fixnum
+cl:internal-time-units-per-second
+cl:array-rank-limit
+cl:array-dimension-limit
+#+END_SRC
+
+Example of incorrectly used dynamic variable naming pattern (before the proposed change) (SBCL implementation):
+#+BEGIN_SRC
+(let ((*a* 1))
+  (setf *a* 2))
+
+; file: /tmp/slimer0wqXc
+; in: LET ((*A* 1))
+;     (LET ((COMMON-LISP::*A* 1))
+;       (SETF COMMON-LISP::*A* 2))
+;
+; caught COMMON-LISP:STYLE-WARNING:
+;   using the lexical binding of the symbol (COMMON-LISP::*A*), not the
+;   dynamic binding, even though the name follows
+;   the usual naming convention (names like *FOO*) for special variables
+;
+; compilation unit finished
+;   caught 1 STYLE-WARNING condition
+#+END_SRC
+
+Examples of predicates named *p vs *-p (including a popular 3rd-party library):
+
+'Good' examples (before the proposed change):
+#+BEGIN_SRC
+cl:evenp
+cl:oddp
+cl:stringp
+cl:base-string-p
+cl:hash-table-p
+cl:pathname-match-p
+#+END_SRC
+
+'Bad' examples (before the proposed change)
+#+BEGIN_SRC
+bordeaux-threads:lock-p
+bordeaux-threads:semaphore-p
+cl:string-lessp
+cl:string-not-lessp
+cl:string-greaterp
+cl:string-not-greaterp
+#+END_SRC
+
+---------
 ---------
 
 * New (presumably low-level) language:
