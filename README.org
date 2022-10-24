@@ -3,23 +3,23 @@
 This document's main goal is to collect ideas and propositions about next generation CL (standard/specification/othername). This is NOT a template for a new specification, but merely a place for discussion.
 
 
-Ideas should be pull requests and discussions should take place in issues. Keep in mind that many things proposed here can be contradictory to each other, resulting in several differently designed languages. However this is a step forward compared to single messages and abrupt threads spread across different random chats, blogs and formus. Surely it is time to start accumulating ideas no matter how fundamental or small they are. While main inspiration comes from Common Lisp, people contributing to this usually know more than one language.
+Ideas should be pull requests and discussions should take place in issues. Keep in mind that many things proposed here can be contradictory to each other, resulting in several differently designed languages. However this is a step forward compared to single messages and abrupt threads spread across different random chats, blogs and forums. Surely it is time to start accumulating ideas no matter how fundamental or small they are. While the main inspiration comes from Common Lisp, people contributing to this usually know more than one language.
 
 
 * Motivation:
 
-Common Lisp standard was created in 1994. The major goal was to unite many (relatively big as well as small) dialects of previous Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such approach is uniting community around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a certain level of backwards compatibility with all the previous existing dialects, resulting in language with different (not always consistent with each other) features and a certain historical baggage.
+Common Lisp standard was created in 1994. The major goal was to unite many (relatively big as well as small) dialects of Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such an approach was uniting communities around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a certain level of backwards compatibility with all the previously existing dialects, resulting in a language with different (not always consistent with each other) features and a certain historical baggage.
 
 
 ** Summary:
 So far it seems that all suggestions can be divided into three categories -- fully backwards compatible, almost backwards compatible (with very minor refactorizations required)... and basically a new lisp language. Apparently, the new language suggestions tend to lean towards low-level features, as the demand for high-level ones is already satisfied by high flexibility of CL.
 
-Fully backwards compatible propositions share goal with CDR project, read below.
+Fully backwards compatible propositions share goals with the CDR project, read below.
 
 * Alternatives:
 
 + [[https://common-lisp.net/project/cdr/][CDR Project]]
-  The project is mainly focused on backwards compatible suggestions, implementated incrementally.
+  The project is mainly focused on backwards compatible suggestions, implemented incrementally.
 
 + Honorable mention:
 
@@ -39,7 +39,7 @@ And there is also [[https://www.cliki.net/Proposed%20ANSI%20Revisions%20and%20Cl
 *** Extensible loop
 
 **** Details
-The very reason iterate library exists. However, having a loop construct (a basic feature) as a library makes it very non obvious, especially for newcomers. The "iterate vs loop" argument, certain design choices (loop being "unlispy" vs iterate using code-walker) -- are issues to be resolved.
+The very reason the Iterate library exists. However, having a loop construct (a basic feature) as a library makes it very non obvious, especially for newcomers. The "Iterate vs LOOP" argument, certain design choices (LOOP being "unlispy" vs Iterate using code-walker) -- are issues to be resolved.
 
 **** Reasoning
 
@@ -56,7 +56,7 @@ There are many possible improvements for hash-tables -- readable hash-tables, in
 **** Current status
 
 ---------
-*** Unifyining variables declarations.
+*** Unifying variables declarations.
 
 **** Details
 =Let= handling multiple values biding and/or list-pattern matching. Global variables with =defglobal=, see =sb-ext:defglobal=.
@@ -169,7 +169,7 @@ More security on certain areas.
 *** Compilation
 
 **** Details
-Different ways of compilation in more details, for example bloack-compilation, akin to [[https://mstmetent.blogspot.com/2020/02/block-compilation-fresh-in-sbcl-202.html][what]] is done in sbcl.
+Different ways of compilation in more details, for example block-compilation, akin to [[https://mstmetent.blogspot.com/2020/02/block-compilation-fresh-in-sbcl-202.html][what]] is done in SBCL.
 
 **** Reasoning
 
@@ -190,7 +190,7 @@ Extensible data structures of different kind. The protocol for sequences is also
 ---------
 *** Native lazy list via lazy-cons type which satisfies consp.
 **** Details
-While laziness can be theoretically speaking implemented as a library, the __efficient__ (that is, for production use) laziness is nontrivial to make. Thereofre, it makes sense for
+While laziness can be theoretically speaking implemented as a library, the efficient (that is, for production use) laziness is nontrivial to make. Therefore, it makes sense for
 maintainers of the language to implement it (at some point) as a part of (semi-)standard library.
 
 **** Reasoning
@@ -201,7 +201,7 @@ maintainers of the language to implement it (at some point) as a part of (semi-)
 
 *** Standard library redesign
 **** Details
-Some thigns that are in there can be in utility libs such as alexandria, while some thigns from alexandria can be too useful to not include them.
+Some things that are in there can be in utility libs such as Alexandria, while some things from Alexandria can be too useful to not include them.
 
 **** Reasoning
 
@@ -263,7 +263,7 @@ At least some control over it is in high demand. Better support for dynamic-exte
 
 *** Environments
 **** Details
-Standardtized, and a set of baisc functions to wrok with them.
+Standardized, and a set of basic functions to work with them.
 
 **** Reasoning
 
@@ -303,7 +303,7 @@ As a compatibility [[https://github.com/phoe/trivial-package-local-nicknames][li
 Having the standard dictate that incorrect usage of the above be a compilation or even runtime error would make this change (almost?) definitely backwards incompatible (to an unknown (but potentially huge) extent).
 
 **** Reasoning
-It has been the community consensus for many years that these naming patterns should be used based on what meaning a given name holds. Any exception to this rule is just unexpected, unnecessary and probably should be treated as an error because the way a variable is named conveys the intented way of using it. Some compilers (i.e. SBCL) even give warnings about misuse of dynamic-variable-looking variables based on this particular convention.
+It has been the community consensus for many years that these naming patterns should be used based on what meaning a given name holds. Any exception to this rule is just unexpected, unnecessary and probably should be treated as an error because the way a variable is named conveys the intended way of using it. Some compilers (i.e. SBCL) even give warnings about misuse of dynamic-variable-looking variables based on this particular convention.
 
 **** Current status
 The names for constants are not consistent across the board.
@@ -382,21 +382,21 @@ CLOS has classes that are more of a first-class citizens, compared to structures
 Which types should and should not be included, boxed vs unboxed types, type parametrization, linear types, dependent types etc. Interaction with other parts such as (compiler-)macros.
 
 **** Reasoning
-Current type system is a state of art, but it is a state of art from the 90s. There was a lot of research in the area for the last decaded that should be considered. While not all of this (if any) should go into the spec, the goal is to make it easier for the future developers to incorporate their prefered features into the language.
+The current type system is a state of art, but it is a state of art from the 90s. There was a lot of research in the area for the last decade that should be considered. While not all of this (if any) should go into the spec, the goal is to make it easier for the future developers to incorporate their prefered features into the language.
 
 **** Current status
 + [[https://blog.30dor.com/2014/03/21/performance-and-types-in-lisp/][Performnance and types in Lisp]]
-+ There are various attemps to extend type system with proper parametrized types, recursived type definitions, more strict type checks and inference, the major example being [[https://github.com/stylewarning/coalton][Coalton]].
++ There are various attemps to extend type system with proper parametrized types, recursive type definitions, more strict type checks and inference, the major example being [[https://github.com/stylewarning/coalton][Coalton]].
 
 *** Methods
 **** Details
-Depending on class system, methods or rather "methods" can be organized into traits/typeclasses, or generics, or belong to the class (unlikely). They can also specialize either on classes or types.
+Depending on the class system, methods or rather "methods" can be organized into traits/typeclasses, or generics, or belong to the class (unlikely). They can also specialize either on classes or types.
 
 **** Reasoning
 THe way generics work in CLOS allows for a certain flexibility and famous runtime redefinition. However at the same time, the performance of the current approach is quite poor, restriciting its use. Sometimes specializing on classes instead of types can be limiting.
 
 **** Current status
-There are several atttempts to deal with the inefficiency (in terms of raw performance and safety) of generic functions -- including [[https://github.com/marcoheisig/fast-generic-functions][fast-generic-functions]], [[https://github.com/markcox80/specialization-store][specialization-store]], and [[https://github.com/digikar99/adhoc-polymorphic-functions][others]]. However, they do not fully avoid limitations mentioned above.
+There are several atttempts to deal with the inefficiency (in terms of raw performance and safety) of generic functions -- including [[https://github.com/marcoheisig/fast-generic-functions][fast-generic-functions]], [[https://github.com/markcox80/specialization-store][specialization-store]], and [[https://github.com/digikar99/adhoc-polymorphic-functions][others]]. However, they do not fully avoid the limitations mentioned above.
 
 There are also attempts to do something completely different such as [[https://github.com/fare/lisp-interface-library][LIL]] -- they should not be forgotten.
 ----------
@@ -408,9 +408,9 @@ No additional syntax at all (even for strings) with the ability to heavily modif
 
 vs
 
-A lot of builtin syntaxic sugar, for example for literals, but some other thigns as well (some examples presented below), since there aren't that many common special syntaxic constructs, for ease of use.
+A lot of builtin syntactic sugar, for example for literals, but some other thigns as well (some examples presented below), since there aren't that many common special syntactic constructs, for ease of use.
 
-The default case, case sensitivity etc are also a thing to discuss, although there isn't much talk about hat part.
+The default case, case sensitivity etc are also a thing to discuss, although there isn't much talk about that part.
 
 This section can be separated in the future if necessary.
 
@@ -419,7 +419,7 @@ This section can be separated in the future if necessary.
 The way reader macros should work and interaction between user and reader.
 
 **** Reasoning
-Currently the system does not allow users to hook into reader. That could be a huge imporvement, allowing for various modifications.
+Currently the system does not allow users to hook into reader. That could be a huge improvement, allowing for various modifications.
 
 **** Current status
 There are libraries that try to extend possibilities, such as [[https://github.com/melisgl/named-readtables][named-readtables]].
@@ -443,7 +443,7 @@ access. =(elt (nth 1 (foo-slot2 (bar-slot1 obj)) 0)= can be written =@obj.slot1.
 Operations (functions, macros etc) have predictable (possibly identical) order of arguments. If an operations takes for example 2 arguments (data structure and an index/key) - it is expected that the data structure is always on the same position and the key is also on the same position across the board, regardless of what the actual positions are.
 
 **** Reasoning
-This issue is an unnecessary burden on one's mind when developing a project and forces the developer to break their focus to think about an out of place implementation detail instead of on the program's business logic. It's just is something that is there for no reason other than legacy.
+This issue is an unnecessary burden on one's mind when developing a project and forces the developer to break their focus to think about an out of place implementation detail instead of on the program's business logic. It's just something that is there for no reason other than legacy.
 
 **** Current status
 The standard contains functions like (gethash key hashtable) and (aref array index).
@@ -472,7 +472,7 @@ Interaction with pathnames w.r.t. current OS landscape. One standard way to pars
 
 *** Separation into libraries
 **** Details
-The core language can be separated into libraries with separate condition system, data structuers library, algorithms library, math library, concurrency library, iteration library, code-walking library, etc.
+The core language can be separated into libraries with separate condition system, data structures library, algorithms library, math library, concurrency library, iteration library, code-walking library, etc.
 
 **** Reasoning
 
@@ -489,7 +489,7 @@ GC vs RAII in some form. There are several alternatives. Semantics of the langua
 + Aspects include real-time systems, working well with foreign code, embedded-systems aka devices with limited memory; maybe something else
 + The whole page is an interesting read: [[https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)#Disadvantages][Garbage_collection_(computer_science) - Wikipedia]]
 + https://en.wikipedia.org/wiki/Manual_memory_management#Manual_management_and_correctness
-+ What are th systems where GC is and isn't an issue (limited-memory systems?)
++ What are the systems where GC is and isn't an issue (limited-memory systems?)
 + Default GC, but if GC does have disadvantages, an option to handle the memory manually should be provided.
 
 **** Reasoning
@@ -503,7 +503,7 @@ GC vs (semi) manual memory management is about many things, including performanc
 A powerful low-level control construct.
 
 **** Reasoning
-It is up to the debate for several reasons, one of the being its [[http://www.nhplace.com/kent/PFAQ/unwind-protect-vs-continuations-original.html][interaction]] with unwind-protect.
+It is up to the debate for several reasons, one of them being its [[http://www.nhplace.com/kent/PFAQ/unwind-protect-vs-continuations-original.html][interaction]] with unwind-protect.
 
 **** Current status
 --------
@@ -515,7 +515,7 @@ It is up to the debate for several reasons, one of the being its [[http://www.nh
 ** Is this idea new?
 
 Of course not. Attempts to build low level C-like lisp exist, lots of them: [[https://github.com/eudoxia0/corvus][1]], [[https://github.com/tomhrr/dale][2]], [[https://github.com/kiselgra/c-mera][3]], [[https://github.com/eudoxia0/interim][4]] and there are more.
-Attempts to build low-level stattically-typed lisp-like language are also well known: [[https://github.com/carp-lang/Carp][1]], [[https://github.com/u2zv1wx/neut][2]] and there are more.
+Attempts to build low-level statically-typed lisp-like language are also well known: [[https://github.com/carp-lang/Carp][1]], [[https://github.com/u2zv1wx/neut][2]] and there are more.
 Two things they presumably lack are: pre-built well defined specification and community visibility and support.
 
 
@@ -524,7 +524,7 @@ Same can be said about attempts to just upgrade exiting CL implementation, such 
 
 * Useful links:
 
-[[http://nhplace.com/kent/Papers/cl-untold-story.html][Common Lisp: The Untold Story]] and [[http://nhplace.com/kent/Papers/][friends]] have a lot of useful info in them. [[https://pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/][Paul Khuong blog]] has many notes on potential compiler improvement, althoug specific to sbcl.
+[[http://nhplace.com/kent/Papers/cl-untold-story.html][Common Lisp: The Untold Story]] and [[http://nhplace.com/kent/Papers/][friends]] have a lot of useful info in them. [[https://pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/][Paul Khuong blog]] has many notes on potential compiler improvement, althoug specific to SBCL.
 
 * Obstacles
 
