@@ -8,7 +8,7 @@ Ideas should be pull requests and discussions should take place in issues. Keep 
 
 * Motivation:
 
-Common Lisp standard was created in 1994. The major goal was to unite many (relatively big as well as small) dialects of Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such an approach was uniting communities around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a certain level of backwards compatibility with all the previously existing dialects, resulting in a language with different (not always consistent with each other) features and a certain historical baggage.
+The Common Lisp standard was created in 1994. The major goal was to unite many (relatively big as well as small) dialects of Lisp making it an ultimate successor of MacLisp Lisp series. The natural advantage of such an approach was uniting communities around a single project, thus getting a large amount of manpower for further development. However, as a result the developers had to try to maintain a certain level of backwards compatibility with all the previously existing dialects, resulting in a language with different (not always consistent with each other) features and a certain historical baggage.
 
 
 ** Summary:
@@ -59,7 +59,7 @@ There are many possible improvements for hash-tables -- readable hash-tables, in
 *** Unifying variables declarations.
 
 **** Details
-=Let= handling multiple values biding and/or list-pattern matching. Global variables with =defglobal=, see =sb-ext:defglobal=.
+=Let= handling multiple value bindings and/or list-pattern matching. Global variables with =defglobal=, see =sb-ext:defglobal=.
 
 **** Reasoning
 
@@ -364,7 +364,7 @@ cl:string-not-greaterp
 
 * New (presumably low-level) language:
 
-All of the above suggestions apply to this as well however if a new language is being made, it makes sense to care less about any kind backwards compatibility and more about features. The ones presented here have very general description and are directions rather than something that can be put into actual specification.
+All of the above suggestions apply to this as well however if a new language is being made, it makes sense to care less about any kind of backwards compatibility and more about features. The ones presented here have very general description and are directions rather than something that can be put into actual specification.
 
 ** Object system
 *** Objects
@@ -372,21 +372,21 @@ All of the above suggestions apply to this as well however if a new language is 
 How objects should be made? Constructors, destructors, (multiple) inhertiance vs composition etc
 
 **** Reasoning
-There are different object systems for different tasks, but some of them are easier implemented in terms of another. Currently classes/structures cannot be parametrized in any way.
+There are different object systems for different tasks, but some of them are easier implemented in terms of another. Currently classes/structures cannot be parameterized in any way.
 
 **** Current status
-CLOS has classes that are more of a first-class citizens, compared to structures that are less used and supported. Both of them interact with type system in a certain way, sometimes not the best.
+CLOS has classes that are more first-class citizens, compared to structures that are less used and supported. Both of them interact with the type system in a certain way, sometimes not the best.
 
 *** Type system
 **** Details
-Which types should and should not be included, boxed vs unboxed types, type parametrization, linear types, dependent types etc. Interaction with other parts such as (compiler-)macros.
+Which types should and should not be included, boxed vs unboxed types, type parameterization, linear types, dependent types etc. Interaction with other parts such as (compiler-)macros.
 
 **** Reasoning
-The current type system is a state of art, but it is a state of art from the 90s. There was a lot of research in the area for the last decade that should be considered. While not all of this (if any) should go into the spec, the goal is to make it easier for the future developers to incorporate their prefered features into the language.
+The current type system is state of the art, but it is state of the art from the 90s. There was a lot of research in the area for the last decade that should be considered. While not all of this (if any) should go into the spec, the goal is to make it easier for the future developers to incorporate their preferred features into the language.
 
 **** Current status
 + [[https://blog.30dor.com/2014/03/21/performance-and-types-in-lisp/][Performnance and types in Lisp]]
-+ There are various attemps to extend type system with proper parametrized types, recursive type definitions, more strict type checks and inference, the major example being [[https://github.com/stylewarning/coalton][Coalton]].
++ There are various attempts to extend the type system with proper parameterized types, recursive type definitions, more strict type checks and inference, the major example being [[https://github.com/stylewarning/coalton][Coalton]].
 
 *** Methods
 **** Details
@@ -408,7 +408,7 @@ No additional syntax at all (even for strings) with the ability to heavily modif
 
 vs
 
-A lot of builtin syntactic sugar, for example for literals, but some other thigns as well (some examples presented below), since there aren't that many common special syntactic constructs, for ease of use.
+A lot of builtin syntactic sugar, for example for literals, but some other things as well (some examples presented below), since there aren't that many common special syntactic constructs, for ease of use.
 
 The default case, case sensitivity etc are also a thing to discuss, although there isn't much talk about that part.
 
@@ -419,7 +419,7 @@ This section can be separated in the future if necessary.
 The way reader macros should work and interaction between user and reader.
 
 **** Reasoning
-Currently the system does not allow users to hook into reader. That could be a huge improvement, allowing for various modifications.
+Currently the system does not allow users to hook into the reader. That could be a huge improvement, allowing for various modifications.
 
 **** Current status
 There are libraries that try to extend possibilities, such as [[https://github.com/melisgl/named-readtables][named-readtables]].
@@ -440,7 +440,7 @@ access. =(elt (nth 1 (foo-slot2 (bar-slot1 obj)) 0)= can be written =@obj.slot1.
 
 *** Unified order of arguments
 **** Details
-Operations (functions, macros etc) have predictable (possibly identical) order of arguments. If an operations takes for example 2 arguments (data structure and an index/key) - it is expected that the data structure is always on the same position and the key is also on the same position across the board, regardless of what the actual positions are.
+Operations (functions, macros etc) have predictable (possibly identical) order of arguments. If an operation takes for example 2 arguments (data structure and an index/key) - it is expected that the data structure is always in the same position and the key is also in the same position across the board, regardless of what the actual positions are.
 
 **** Reasoning
 This issue is an unnecessary burden on one's mind when developing a project and forces the developer to break their focus to think about an out of place implementation detail instead of on the program's business logic. It's just something that is there for no reason other than legacy.
